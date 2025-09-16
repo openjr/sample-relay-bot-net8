@@ -1,0 +1,57 @@
+# Build output
+bin/
+obj/
+out/
+publish/
+artifacts/
+
+# IDE / editor stuff
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+.vs/
+.vscode/
+.idea/
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Package managers
+*.nupkg
+*.snupkg
+*.nuspec
+packages/
+*.tgz
+
+# Rider / JetBrains
+*.iml
+*.ipr
+*.iws
+
+# Test results
+TestResult*/
+*.trx
+*.coverage
+*.coveragexml
+
+# Azure deploy artifacts
+*.PublishSettings
+*.pubxml
+*.pubxml.user
+# If you use VS publish profiles, they can leak app names & creds
+Properties/PublishProfiles/
+
+# App secrets
+appsettings.Development.json
+appsettings.*.local.json
+secrets.json
+
+# Don’t commit secrets in appsettings.json either
+# If you need a template, create appsettings.json.example
+# and add the real appsettings.json here:
+appsettings.json
