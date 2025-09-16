@@ -1,0 +1,16 @@
+{
+  "MicrosoftAppId": "",
+  "MicrosoftAppPassword": "",
+  "BotService": {
+    "BotName": "",
+    "BotId": "",
+    "TenantId": "",
+    "TokenEndPoint": ""
+  },
+  "ConversationPool": {
+    "TokenRefreshCheckIntervalInMinute": 10,
+    "TokenRefreshIntervalInMinute": 30,
+    "ConversationEndAfterIdleTimeInMinute": 30,
+    "ConversationEndCheckIntervalInMinute": 10
+  }
+}
