@@ -10,8 +10,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.PowerVirtualAgents.Samples.RelayBotSample.Bots;
 
-// Maybe one day I understand how things work?
-
 namespace Microsoft.PowerVirtualAgents.Samples.RelayBotSample
 {
     public class Startup

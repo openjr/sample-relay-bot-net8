@@ -48,5 +48,3 @@ app.MapPost("/api/messages",
 
 app.Run();
 
-// dumb comment
-// another comment 
