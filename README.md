@@ -9,6 +9,7 @@ This bot has been created based on [Bot Framework](https://dev.botframework.com)
 - [.NET Core SDK](https://dotnet.microsoft.com/download) version 8
 
   ```bash
+  
   # determine dotnet version
   dotnet --version
   ```
