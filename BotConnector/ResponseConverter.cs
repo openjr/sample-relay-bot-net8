@@ -41,6 +41,16 @@ namespace Microsoft.PowerVirtualAgents.Samples.RelayBotSample
             new System.Text.RegularExpressions.Regex(@"(?<!!)\[([^\]]+)\]\(([^)]+)\)",
                 System.Text.RegularExpressions.RegexOptions.Compiled);
 
+        private static readonly System.Text.RegularExpressions.Regex SeparatorRegex =
+            new System.Text.RegularExpressions.Regex(@"^\s*---\s*$",
+                System.Text.RegularExpressions.RegexOptions.Multiline |
+                System.Text.RegularExpressions.RegexOptions.Compiled);
+
+        private static readonly System.Text.RegularExpressions.Regex TitleBoldRegex =
+            new System.Text.RegularExpressions.Regex(@"\*_(?=\S)(.+?)(?<=\S)_\*",
+                System.Text.RegularExpressions.RegexOptions.Compiled);
+
+
         /// <summary>
         ///  Convert text that comes in Markdown to slack version of markdown.
         /// </summary>
@@ -59,6 +69,13 @@ namespace Microsoft.PowerVirtualAgents.Samples.RelayBotSample
                 codeBlocks.Add(match.Value);
                 return $"%CODEBLOCK{codeBlocks.Count - 1}%";
             });
+
+            // Remove separators: ---
+            text = SeparatorRegex.Replace(text, string.Empty);
+
+            // Convert *_TEXT*_ to bold (*TEXT*)
+            // We use a temporary placeholder (\u0002) to avoid conflict with the subsequent italic conversion
+            text = TitleBoldRegex.Replace(text, "\u0002$1\u0002");
 
             // 3. Bold: **text** or __text__ -> *text*
             // We use a temporary placeholder (\u0002) to avoid conflict with the subsequent italic conversion
