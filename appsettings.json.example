@@ -12,5 +12,9 @@
     "TokenRefreshIntervalInMinute": 30,
     "ConversationEndAfterIdleTimeInMinute": 30,
     "ConversationEndCheckIntervalInMinute": 10
+  },
+  "ServiceAccount": {
+    "Username": "someuser@somedomain.com",
+    "Password": "supersecurepassword"
   }
 }

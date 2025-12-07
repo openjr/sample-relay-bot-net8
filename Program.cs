@@ -1,3 +1,4 @@
+using System;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Bot.Builder;
 using Microsoft.Bot.Builder.Integration.AspNet.Core;
@@ -28,7 +29,16 @@ builder.Services.AddSingleton<BotFrameworkAuthentication>(sp =>
     new ConfigurationBotFrameworkAuthentication(builder.Configuration));
 
 builder.Services.AddSingleton<IBotFrameworkHttpAdapter, CloudAdapterWithErrorHandler>();
+builder.Services.AddSingleton<IConfiguration>(builder.Configuration);
 builder.Services.AddTransient<IBot, RelayBot>();
+
+// Manually override the configuration with the environment variable
+var serviceAccountPassword = Environment.GetEnvironmentVariable("BOT_SERVICE_ACCOUNT_PASSWORD");
+if (!string.IsNullOrEmpty(serviceAccountPassword))
+{
+    // This maps the env var to the "ServiceAccount" section's "Password" key
+    builder.Configuration["ServiceAccount:Password"] = serviceAccountPassword;
+}
 
 
 // Register any services your relay uses (e.g., Direct Line client/service, storage, etc.)
